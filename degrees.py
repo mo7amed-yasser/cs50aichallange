@@ -139,8 +139,10 @@ def shortest_path(source, target):
             return explored
         explored.add(node.state)
         for neighbors in neighbors_for_person(node.state):
-            node2=Node(state=neighbors[1],parent=node.state,action=None)
-            search.add(node2)
+            if neighbors[1] not in explored:
+                explored.add(neighbors[1])
+                node2=Node(state=neighbors[1],parent=node.state,action=None)
+                search.add(node2)
 
 
 
